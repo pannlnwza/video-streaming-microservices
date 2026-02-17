@@ -4,6 +4,4 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 CMD npm install --prefer-offline && \
-    npx wait-port metadata:80 && \
-    npx wait-port advertise:80 && \
     npm run start:dev
