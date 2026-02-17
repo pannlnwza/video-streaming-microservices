@@ -34,7 +34,7 @@
                 <h1>Advertisements</h1>
                 <div class="m-4 flex flex-row flex-wrap">
                     {{#each ads}}
-                        <div class="m-2 p-4 border rounded shadow" style="width: 320px;">
+                        <div class="m-2 p-4 border shadow-sm" style="width: 320px;">
                             <a href="{{this.url}}" target="_blank">
                                 <img src="/api/advertise{{this.image}}" alt="{{this.name}}" class="w-full" style="height: 200px; object-fit: contain;">
                                 <div class="mt-2 text-center text-lg font-bold">{{this.name}}</div>
