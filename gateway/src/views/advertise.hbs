@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>FlixTube: Home</title>
+        <title>FlixTube: Advertise</title>
 
         <link rel="stylesheet" href="css/tailwind.min.css">
         <link rel="stylesheet" href="css/app.css">
@@ -15,7 +15,7 @@
                     <div class="text-xl font-bold">
                         FlixTube
                     </div>
-                    <div class="ml-16 border-b-2 border-blue-600">
+                    <div class="ml-16">
                         <a href="/">Videos</a>
                     </div>
                     <div class="ml-4">
@@ -24,24 +24,24 @@
                     <div class="ml-4">
                         <a href="/history">History</a>
                     </div>
-                    <div class="ml-4">
+                    <div class="ml-4 border-b-2 border-blue-600">
                         <a href="/advertise">Advertise</a>
                     </div>
                 </div>
             </div>
 
             <div class="m-4">
-                <h1>Videos</h1>
-                <div id="video-list" class="m-4">
-                    {{#if videos}}
-                        {{#each videos}}
-                            <div class="mt-1">
-                                <a href="/video?id={{this._id}}">{{this.name}}</a> 
-                            </div>
-                        {{/each}}
-                    {{else}}
-                        No videos uploaded yet.
-                    {{/if}}
+                <h1>Advertisements</h1>
+                <div class="m-4 flex flex-row flex-wrap">
+                    {{#each ads}}
+                        <div class="m-2 p-4 border rounded shadow" style="width: 320px;">
+                            <a href="{{this.url}}" target="_blank">
+                                <img src="/api/advertise{{this.image}}" alt="{{this.name}}" class="w-full" style="height: 200px; object-fit: contain;">
+                                <div class="mt-2 text-center text-lg font-bold">{{this.name}}</div>
+                                <div class="text-center text-sm text-blue-500">{{this.url}}</div>
+                            </a>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
