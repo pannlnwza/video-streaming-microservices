@@ -84,6 +84,31 @@ async function main() {
     });
 
     //
+    // Web page to show advertisements.
+    //
+    app.get("/advertise", async (req, res) => {
+
+        // Retreives the data from the advertise microservice.
+        const adsResponse = await axios.get("http://advertise/ads");
+
+        // Renders the ads for display in the browser.
+        res.render("advertise", { ads: adsResponse.data.ads });
+    });
+
+    //
+    // HTTP GET route to proxy ad images from the advertise microservice.
+    //
+    app.get("/api/advertise/images/:name", async (req, res) => {
+
+        const response = await axios({
+            method: "GET",
+            url: `http://advertise/images/${req.params.name}`,
+            responseType: "stream",
+        });
+        response.data.pipe(res);
+    });
+
+    //
     // HTTP POST route to upload video from the user's browser.
     //
     app.post("/api/upload", async (req, res) => {
